@@ -6,11 +6,11 @@ import * as path from 'path';
 
 import setRoutes from './routes';
 
-const app = express();
-
 if (process.env.NODE_ENV !== 'production') {
   dotenv.load({ path: '.env' });
 }
+
+const app = express();
 
 const IMG_PATH = process.env.IMG_PATH || '../../uploads/img/';
 

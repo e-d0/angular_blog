@@ -38,10 +38,10 @@ import { ArticlesViewComponent } from './article/articles-view/articles-view.com
 import {ArticleUpdateComponent} from './article/article-update/article-update.component';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {LoginFormComponent, ModalLoginContentComponent} from './shared/modal/login-form/login-form.component';
-import {ContactFormComponent} from "./shared/modal/contact-form/contact-form.component";
+import {ContactFormComponent} from './shared/modal/contact-form/contact-form.component';
 import { ArticlesPageComponent } from './article/articles/articles-page/articles-page.component';
 import { AboutTeaserComponent } from './about/about-teaser/about-teaser.component';
-import {NavigationbarComponent} from "./navigationbars/navigationbar.component";
+import {NavigationbarComponent} from './navigationbars/navigationbar.component';
 import { AboutPageComponent } from './about/about-page/about-page.component';
 import { ArticleTeaserMainComponent } from './article/article-teaser-main/article-teaser-main.component';
 

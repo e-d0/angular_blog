@@ -1,9 +1,5 @@
-import * as dotenv from 'dotenv';
 import * as nodemailer from 'nodemailer';
 import * as smtpTransport from 'nodemailer-smtp-transport';
-
-const email = process.env.MAIL_ADRESS;
-const pass = process.env.EMAIL_PASS;
 
 export class MailNotificator {
 
@@ -12,6 +8,9 @@ export class MailNotificator {
   }
 
 sendMail = (req, res) => {
+
+  const email = process.env.MAIL_ADRESS;
+  const pass = process.env.EMAIL_PASS;
 
   const transporter = nodemailer.createTransport(smtpTransport({
       host: 'smtp.gmail.com',

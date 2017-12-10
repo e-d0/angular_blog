@@ -11,10 +11,10 @@
     "typeRoots": [
       "node_modules/@types"
     ],
-    "include": ["node_modules/angular-bootstrap-md/**/*.ts",  "src/**/*.ts"],
     "lib": [
       "es2017",
       "dom"
     ]
-  }
+  },
+  "include": ["node_modules/angular-bootstrap-md/**/*.ts",  "src/**/*.ts"]
 }
