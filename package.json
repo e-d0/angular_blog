@@ -37,7 +37,7 @@
     "cote": "^0.15.1",
     "dotenv": "^4.0.0",
     "font-awesome": "^4.7.0",
-    "hammerjs": "^4.0.0",
+    "hammerjs": "^4.1.0",
     "http-proxy": "^1.16.2",
     "intl": "^1.2.5",
     "jimp": "^0.2.28",
