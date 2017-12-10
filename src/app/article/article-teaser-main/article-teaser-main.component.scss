@@ -1,0 +1,35 @@
+.view_teaser_card_img{
+  min-height: 14em;
+  -webkit-background-size: cover;
+  background: no-repeat center;
+  background-size: 100%;
+  border-top-left-radius: .3rem;
+  border-top-right-radius: .3rem;
+  transition: all .5s cubic-bezier(.19,1,.22,1);
+}
+
+
+.overlay:hover .view_teaser_card_img{
+  background-size: 103%;
+}
+
+.view_teaser_card_img .link{
+  display: inline-block;
+  width:100%;
+  height:100%;
+}
+
+a.card-data-wrapper{
+  transition: .2s ease-out;
+  &:hover{
+
+  }
+}
+
+a.card-data-wrapper:hover .card-data{
+  background-color: #a8319b !important;
+}
+
+
+
+

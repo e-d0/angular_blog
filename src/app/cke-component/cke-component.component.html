@@ -1,0 +1,12 @@
+<div [formGroup]="group" >
+
+  <ckeditor
+    [(ngModel)]="ckeditorContent"
+    [formControlName]="'content'"
+    [config]="{uiColor: '#a4a4a4'}"
+    (submit)="onSubmit()"
+    debounce="500">
+  </ckeditor>
+</div>
+
+

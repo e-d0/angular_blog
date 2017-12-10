@@ -1,0 +1,59 @@
+
+<div class="container">
+
+  <h2>Add article form</h2>
+  <form class="panel " [formGroup]="updateArticleForm" (ngSubmit)="articleUpdate()" action="">
+
+      <div class="form-group row">
+        <label class="col-md-2" for="title">Article title: </label>
+        <input class="col-6 form-control" type="text" formControlName="title" name="title" id="title">
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2" for="url">Article url: </label>
+        <input class="col-6 form-control" type="url" formControlName="url" name="url" id="url">
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2" for="created">Created at: </label>
+
+        <ngb-datepicker class="col-sm-12 col-lg-4 form-control" type="date" formControlName="created"   name="created" id="created"></ngb-datepicker>
+
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2" for="image_teaser">Article teaser img url: </label>
+        <input class="col-6 form-control" type="image_teaser" formControlName="image_teaser" name="image_teaser" id="image_teaser">
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2" for="teaser_text">Article teaser text: </label>
+        <textarea class="col-6 form-control" type="text" formControlName="teaser_text" name="teaser_text" id="teaser_text"></textarea>
+      </div>
+
+      <div class="form-group row">
+
+        <label class="col-md-2" for="created">Content: </label>
+        <ckeEditor [group]="updateArticleForm" class="form-control"></ckeEditor>
+
+      </div>
+
+      <div class="form-group row">
+        <label class="col-md-2 col-form-label" for="tag">Article`s tags: </label>
+        <input class="col-6 form-control" type="text" formControlName="tag" name="tag" id="tag">
+      </div>
+      <div class="form-group row">
+        <label class="col-md-2" for="weight">Weight: </label>
+        <input class=" col-1 form-control " type="number" formControlName="weight" name="weight" id="weight">
+      </div>
+
+    <button type="submit"  class="btn btn-primary" [disabled]="!updateArticleForm.valid">Submit Form</button>
+    <button class="btn btn-primary" (click)="removeArticle()">remove article</button>
+  </form>
+
+
+
+  <app-image-uploader-component></app-image-uploader-component>
+
+
+
+
+</div>

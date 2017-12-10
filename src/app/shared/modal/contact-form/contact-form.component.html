@@ -1,0 +1,58 @@
+<button type="button" class="btn btn-orange-flash waves-light" (click)="form.show()" mdbRippleRadius>Напишите мне</button>
+<!--Modal: Contact form-->
+<div mdbModal #form="mdb-modal" class="modalContactForm modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog cascading-modal" role="document">
+    <!--Content-->
+    <div class="modal-content">
+
+      <!--Header-->
+      <div class="modal-header dark-red white-text">
+        <h4 class="title"><i class="fa fa-pencil"></i> Напишите мне</h4>
+        <button type="button" class="close waves-effect waves-light" data-dismiss="modal" aria-label="Close" (click)="form.hide()">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <form  [formGroup]="contactForm" (ngSubmit)="onSubmit()" >
+          <div class="modal-body mb-0">
+            <div class="md-form form-sm">
+              <i class="fa fa-user prefix"></i>
+              <input mdbActive type="text" id="contact_name" formControlName="username" class="form-control">
+              <label for="contact_name">Имя</label>
+            </div>
+
+            <div class="md-form form-sm">
+              <i class="fa fa-envelope prefix"></i>
+              <input mdbActive type="email" id="contact_email" formControlName="email" class="form-control" required="true">
+              <label for="contact_email">Email</label>
+            </div>
+
+             <div class="md-form form-sm">
+              <i class="fa fa-pencil prefix"></i>
+              <textarea mdbActive type="text" id="contact_message" formControlName="message" class="md-textarea mb-0"></textarea>
+              <label for="contact_message">Сообщение</label>
+            </div>
+            <div class="hidden-box">
+              <input id="spmbx" type="checkbox"  (change)="monitorChckbx($event)"  value="License agreetment" [checked]="false">
+              <label for="spmbx">Subscribe to newsletter?</label>
+            </div>
+
+            <div class="text-center mt-1-half">
+              <button type="submit" [disabled]="!contactForm.valid" class="btn btn-info mb-2   retro-blue" mdbRippleRadius>Отправить <i class="fa fa-send ml-1"></i></button>
+            </div>
+            <div *ngIf="successMessagebool" class="text-center p-2 alert-success" >
+              <strong>{{successMessage }}</strong>
+            </div>
+            <div *ngIf="errorMessagebool" class="text-center p-2 alert-danger" >
+              <strong>{{errorMessageContent }}</strong>
+            </div>
+            <span *ngIf="contactForm.hasError('email', 'email') && contactForm.get('email').touched">
+              Please enter the correct email, this email not valid.
+            </span>
+          </div>
+      </form>
+    </div>
+    <!--/.Content-->
+  </div>
+</div>
+<!--Modal: Contact form-->

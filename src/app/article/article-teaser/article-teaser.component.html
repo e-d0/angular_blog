@@ -1,0 +1,29 @@
+  <div class="view_teaser_card card pr-3 pl-3 pt-3"  >
+    <div class="row">
+
+      <!--Grid column-->
+      <div class="col-lg-4 mb-4">
+        <!--Featured image-->
+        <div class="view overlay hm-white-slight z-depth-1-half">
+           <div class="view_teaser_card_img" [style.background-image]="returnStyleUrl()" ></div>
+          <a href="{{ article_href }}" >
+            <div class="mask"></div>
+          </a>
+        </div>
+      </div>
+      <!--Grid column-->
+
+      <!--Grid column-->
+      <div class="col-lg-7 ml-xl-4 mb-4">
+        <!--Excerpt-->
+        <span href="" class="teasers-text"><h6 class="pb-1"><i class="fa fa-globe pl-0"></i><strong> Перевод </strong></h6></span>
+        <h4 class="mb-3"><strong>{{ teaser_title }}</strong></h4>
+        <p>{{ teaser_text }}</p>
+        <p>{{ created | date: 'dd/MM/yyyy'}}</p>
+        <a href="{{ article_href }}" class="btn btn-md bg-universe">Подробнее</a>
+      </div>
+      <!--Grid column-->
+
+    </div>
+  </div>
+

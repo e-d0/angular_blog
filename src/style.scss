@@ -1,0 +1,361 @@
+/* You can add global styles to this file, and also import other style files */
+
+/* bugfix then hover element with css transitions transform causes the fixed nav jump  */
+.navbar.scrolling-navbar.top-nav-collapse{
+  -webkit-backface-visibility: hidden;
+}
+/**/
+/* IE close btn fix */
+.cascading-modal.modal-dialog .white-text.modal-header .close,
+.cascading-modal.modal-dialog .btn.modal-header .close{
+  top: -8px;
+}
+/**/
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(./assets/iconfont/MaterialIcons-Regular.eot); /* For IE6-8 */
+  src: local('Material Icons'),
+  local('MaterialIcons-Regular'),
+  url(./assets/iconfont/MaterialIcons-Regular.woff2) format('woff2'),
+  url(./assets/iconfont/MaterialIcons-Regular.woff) format('woff'),
+  url(./assets/iconfont/MaterialIcons-Regular.ttf) format('truetype');
+}
+
+.container{
+  margin-top: 6em;
+}
+
+$universe-color: #2d003e!important;
+
+.hidden-box{
+  display: none;
+}
+
+.bg-universe{
+  background-color: $universe-color;
+}
+
+.dark-red{
+background-color: #90114e!important;
+}
+
+.retro-blue{
+  border-radius: 3px;
+  background-color: #4285f4!important;
+}
+
+.fixed-btn{
+  position: fixed;
+  bottom: 0;
+  left: 0;
+}
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+.card-img-teaser{
+  max-height: 20em;
+}
+
+.panel{
+  border-radius: .25rem;
+  box-shadow: 3px 3px 8px 3px rgba(0, 0, 0, 0.25);
+  padding: 2em;
+}
+
+
+.card.card-cascade.narrower .view {
+  margin-left: 4%;
+  margin-right: 4%;
+  margin-top: -20px;
+}
+
+.card.card-cascade .view {
+  border-radius: 4px;
+}
+
+.btn-floating:hover, .card-overlay,
+.card.card-cascade .view,
+.colorful-select .dropdown-content li a:hover,
+.colorful-select .dropdown-content li span:hover,
+.comments-list img,
+.modal-dialog.cascading-modal.modal-avatar .modal-header img,
+.reply-form img, .testimonial-carousel .testimonial .avatar img,
+.z-depth-2{
+  -webkit-box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+  box-shadow: 0 8px 17px 0 rgba(0,0,0,.2), 0 6px 20px 0 rgba(0,0,0,.19);
+}
+
+.btn-floating{
+  transition: all .5s cubic-bezier(.175,.885,.32,1.275);
+  transform: scaleX(1) translate(0);
+  i{
+    transition: all .5s cubic-bezier(.175,.885,.32,1.275) .05s;
+    transform: scale3d(1,1,1) rotate(0deg);
+  }
+}
+
+.card .overlay:hover + .btn-floating,
+.card .btn-floating:hover{
+  transform: scale3d(1.1,1.1,1.1) translateY(-5px);
+  background-color: #a8319b;
+   i{
+     transform: scale3d(1.1,1.1,1.1) rotate(-90deg) translateX(3px);
+   }
+}
+
+.card .btn-floating:hover{
+
+}
+
+.hm-white-slight .full-bg-img, .hm-white-slight .mask {
+  background-color: rgba(255,255,255,.1);
+}
+
+.overlay .mask {
+  opacity: 0;
+  -webkit-transition: all .4s ease-in-out;
+  transition: all .4s ease-in-out;
+}
+
+.view .full-bg-img, .view .mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+
+.waves-effect {
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  user-select: none;
+  z-index: 1;
+}
+
+.card .btn-action {
+  margin: -25px 20px -23px auto;
+  height: 47px;
+  width: 47px;
+  line-height: 0;
+  position: absolute;
+  right: 0px;
+  background-color: #90114e;
+}
+
+a.waves-effect, a.waves-light {
+  display: inline-block;
+}
+
+.btn-floating {
+  z-index: 1;
+  overflow: hidden;
+  width: 47px;
+  height: 47px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: #a6c;
+  -webkit-transition: .3s;
+  transition: .3s;
+}
+
+.btn-floating, .btn-floating i {
+  display: inline-block;
+  color: #fff;
+}
+
+.card .btn-action .fa.fa-chevron-right {
+  margin-top: 2px;
+  margin-left: 2px;
+}
+
+.card .btn-action .fa {
+  font-size: 18px;
+}
+
+.btn-floating i {
+  width: inherit;
+  font-size: 1.25rem;
+  line-height: 47px;
+  text-align: center;
+}
+
+.btn-floating, .btn-floating i {
+  display: inline-block;
+  color: #fff;
+}
+
+.card .card-data {
+  background-color: $universe-color;
+  color: #fff;
+  text-align: center;
+  height: auto;
+  padding: 10px;
+  transition: .2s ease-out;
+  border-bottom-left-radius: .3rem;
+  border-bottom-right-radius: .3rem;
+}
+
+.card .card-data ul {
+  margin-bottom: 0;
+  font-size: .9rem;
+  padding-left: 0;
+}
+.card .card-data ul li, .card .card-review ul li {
+  display: inline;
+}
+
+.card:not([class*=card-outline-]) {
+  border: 0;
+}
+
+#toast-container>div, .author-box, .badge,
+.btn,
+.btn-primary.active:not([disabled]):not(.disabled),
+.btn-primary:not([disabled]):not(.disabled):active,
+.card-wrapper .back, .card-wrapper .front,
+.card.card-cascade.wider .card-body,
+.card:not([class*=card-outline-]),
+.chip, .counter, .dropdown-content,
+.jumbotron, .md-pills .nav-link.active,
+.modal-dialog.cascading-modal .modal-c-tabs .nav-tabs,
+.modal-dialog.modal-notify .modal-header, .navbar,
+.pagination .active .page-link,
+.pricing-card .price .version,
+.section-blog-fw .view,
+.show>.btn-primary.dropdown-toggle,
+.side-nav, .social-list, .z-depth-1 {
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.16), 0 2px 10px 0 rgba(0,0,0,.12);
+
+}
+
+.card {
+  border-radius: .3rem;
+}
+
+.card, .card .card-body h3, .card .card-body h4, .card .card-text {
+  font-weight: 400;
+}
+
+.card {
+  position: relative;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-direction: column;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 1px solid rgba(0,0,0,.125);
+}
+
+.card {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+}
+
+
+/* navbar */
+.blog-navbar li{
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.navbar.navbar-dark .breadcrumb .nav-item > .nav-link,
+.navbar.navbar-dark .navbar-nav .nav-item > .nav-link{
+  display: inline-block;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+  border: 1px solid $universe-color;
+}
+.navbar.navbar-dark .breadcrumb .nav-item > .nav-link.active,
+.navbar.navbar-dark .navbar-nav .nav-item > .nav-link.active{
+  border: 1px solid rgba(253, 223, 89, 0.51)!important;
+  border-radius: 2px;
+  background-color: rgba(239, 151, 66, 0.19);
+}
+
+.modal-backdrop{
+  z-index: 99;
+}
+
+.btn-orange-flash{
+  border: 1px solid rgba(253, 223, 89, 0.51);
+  border-radius: 2px;
+  background-color: rgba(239, 151, 66, 0.19);
+}
+
+
+/* contact form  */
+
+.navbar #modalContactForm form input{
+  height: 2.1rem;
+}
+
+.navbar.navbar-dark #modalContactForm form .form-control{
+  color: #000;
+}
+
+.navbar.navbar-dark #modalContactForm form input[type=text]{
+  border-bottom-color: rgb(189, 189, 189);
+}
+
+.navbar #modalContactForm .md-form.form-sm label.active{
+  font-size: 0.7rem;
+}
+
+/* Mobiles This bit of css make reCaptcha responsive on mobiles.*/
+@media only screen and (max-width : 767px) {
+
+  .g-recaptcha {
+    margin: 0px;
+    padding: 0px;
+    transform: scale(0.77);
+    -webkit-transform: scale(0.77);
+    transform-origin: 0 0;
+    -webkit-transform-origin: 0 0;
+  }
+
+}
+/**/
+
+.btn.bg-universe:hover{
+  background-color: #a8319b !important;
+}
+
+/**/
+
+
+

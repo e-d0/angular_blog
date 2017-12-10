@@ -1,0 +1,25 @@
+
+<div *ngIf="url === '/articles'" class="row" >
+
+  <app-article-teaser class="col-sm-12 mb-3" *ngFor="let article of allArticles"
+                                                          [teaser_title]="article.title"
+                                                          [article_href]="'/article/'+ article.url"
+                                                          [img_teaser]="article.image_teaser"
+                                                          [teaser_text]="article.teaser_text"
+                                                          [created]="article.created">
+  </app-article-teaser>
+
+</div>
+
+<div *ngIf="url === '/'" class="row" >
+  <app-about-teaser class="col-sm-12 col-lg-4 mb-3" ></app-about-teaser>
+  <app-article-teaser-main class="col-sm-12 col-lg-4 mb-3" *ngFor="let article of allArticles"
+                                                          [teaser_title]="article.title"
+                                                          [article_href]="'/article/'+ article.url"
+                                                          [img_teaser]="article.image_teaser"
+                                                          [teaser_text]="article.teaser_text"
+                                                          [created]="article.created">
+  </app-article-teaser-main>
+
+</div>
+

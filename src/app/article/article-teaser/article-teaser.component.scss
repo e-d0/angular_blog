@@ -1,0 +1,19 @@
+.view_teaser_card_img{
+  min-height: 14.5em;
+  -webkit-background-size: cover;
+  background: no-repeat center;
+  background-size: cover;
+}
+
+.view_teaser_card_img .link{
+  display: inline-block;
+  width:100%;
+  height:100%;
+}
+
+.teasers-text{
+  color: #ff8959 ;
+  .card .fa{
+    padding-left: 0;
+  }
+}

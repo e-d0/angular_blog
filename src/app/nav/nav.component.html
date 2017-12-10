@@ -1,0 +1,27 @@
+<header>
+
+  <my-navbar SideClass="navbar blog-navbar fixed-top navbar-expand-lg navbar-dark bg-dark bg-universe scrolling-navbar" [containerInside]="false">
+    <logo>
+      <a class="logo navbar-brand" href="/">
+          <img class="image-responsive" src="/assets/img/praisethesun15-compressor.gif" alt="praisethesun">
+      </a>
+    </logo>
+    <links>
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item  waves-light" mdbRippleRadius>
+            <a class="nav-link" [routerLink]="['/']" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" > Главная </a>
+          </li>
+          <li class="nav-item waves-light" mdbRippleRadius>
+            <a class="nav-link" [routerLink]="['/articles']" routerLinkActive="active" > Статьи </a>
+          </li>
+          <li class="nav-item waves-light" mdbRippleRadius>
+            <a class="nav-link" [routerLink]="['/about']" routerLinkActive="active" > Обо мне </a>
+          </li>
+        </ul>
+
+      <div class=" ">
+        <app-contact-form></app-contact-form>
+      </div>
+    </links>
+  </my-navbar>
+</header>
