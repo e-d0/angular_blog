@@ -5,8 +5,9 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
-    "prod": "ng build --prod && npm run rest-server",
-    "rest-server": "tsc -p server/ && pm2 start ./dist/server/app.js --name rest-server",
+    "prod": "ng build --prod && npm run rest-server-prod",
+    "rest-server-prod": "tsc -p server/ && node ./dist/server/app.js --name rest-server",
+    "rest-server-prod": "tsc -p server/ && pm2 start ./dist/server/app.js --name rest-server --no-daemon",
     "build-prod": "ng build --prod",
     "build": "ng build",
     "test": "ng test",
