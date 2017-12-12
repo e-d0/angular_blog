@@ -5,7 +5,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package*.json ./
 
-RUN npm install --only=production && npm install -g pm2
+RUN npm install && npm install -g pm2
 
 # Bundle app source
 COPY . .
