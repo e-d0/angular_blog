@@ -42,7 +42,8 @@ export class FileUploaderService {
   }
 
   removeImage(name){
-    return this.http.post('/api/remove/' + name, null);
+    // to avoid angular HTTP observable bug should be set response type , else status 200 will be accepted as error
+    return this.http.post('/api/remove/' + name, null , {responseType: 'text'} );
   }
 
   handleError( res: Response | any) : Observable<any>{
