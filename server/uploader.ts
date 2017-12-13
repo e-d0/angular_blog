@@ -15,32 +15,32 @@ export class ImageUploader {
 
   constructor() {
 
-        this.storagePath = path.join(__dirname, IMG_PATH );
+    this.storagePath = path.join(__dirname, IMG_PATH );
 
-        // create image storage path if not exists
-        if (!fs.existsSync(this.storagePath)) {
-          mkdirp.sync(this.storagePath);
-        }
-        // array of resolutions for images
-        this.imageResolutions = [ 320, 540, 1024 ];
-        // configure storage for images
-        this.storage = multer.diskStorage({
-          destination: (req, file, cb) => {
-            cb(null, this.storagePath );
-          },
-          filename: (req, file, cb) => {
-            cb(null, file.fieldname + '-' + Date.now() + '.jpg');
-          }
-        });
+    // create image storage path if not exists
+    if (!fs.existsSync(this.storagePath)) {
+      mkdirp.sync(this.storagePath);
+    }
+    // array of resolutions for images
+    this.imageResolutions = [ 320, 540, 1024 ];
+    // configure storage for images
+    this.storage = multer.diskStorage({
+      destination: (req, file, cb) => {
+        cb(null, this.storagePath );
+      },
+      filename: (req, file, cb) => {
+        cb(null, file.fieldname + '-' + Date.now() + '.jpg');
+      }
+    });
 
-        this.upload = multer({ storage: this.storage }).array('file');
-        // check if path for images exists
-        this.ensureExists(this.storagePath, this.imageResolutions, '0o744', function(err) {
-          if (err) {console.log(err); }// handle folder creation error
-          else console.log('folders created'); // we're all good
-        });
+    this.upload = multer({ storage: this.storage }).array('file');
+    // check if path for images exists
+    this.ensureExists(this.storagePath, this.imageResolutions, '0o744', function(err) {
+      if (err) {console.log(err); }// handle folder creation error
+      else console.log('folders created'); // we're all good
+    });
 
-   }
+  }
 
   // check if path for images exists. creates dir if not
   ensureExists(path, imageResolutions , mask, cb) {
@@ -73,23 +73,23 @@ export class ImageUploader {
 
     // prepare to parse multiform data with 'multer' module
 
-     this.upload( req, res, (err) => {
+    this.upload( req, res, (err) => {
 
         if (err){
           console.log(err);
         }
-       // creating smaller versions of the image
-       this.getAllImagesUrl(req).then(
-         result => {
-           /* successFunction */
-           res.send(result);
-         },
-         error => {
-           /* errorFunction */
-           res.send('error!promise returned error');
-         }
+        // creating smaller versions of the image
+        this.getAllImagesUrl(req).then(
+          result => {
+            /* successFunction */
+            res.status(200).send(result);
+          },
+          error => {
+            /* errorFunction */
+            res.status(404).send('error!promise returned error');
+          }
 
-       );
+        );
 
       }
     );
@@ -102,11 +102,11 @@ export class ImageUploader {
     this.getAllImagesUrl(req).then(
       result => {
         /* successFunction */
-        res.send(result);
+        res.status(200).send(result);
       },
       error => {
         /* errorFunction */
-        res.send('errror!promise returned error');
+        res.status(404).send('errror!promise returned error');
       }
 
     );
@@ -138,7 +138,7 @@ export class ImageUploader {
   // get all images with promise
   getAllImagesUrl = (req) => {
 
-  return new Promise((resolve, reject) => {
+    return new Promise((resolve, reject) => {
 
       fs.readdir(this.storagePath, (err, file) => {
           if (err) reject(err);
@@ -159,11 +159,11 @@ export class ImageUploader {
                 const smallSizeUrl = host + (this.imageResolutions ? (this.imageResolutions['0'] + '/') : '' ) + file[i];
                 const imagePath = host + file[i];
                 const urlObj = { thumbnailPath: smallSizeUrl,
-                                 imagePath: imagePath };
+                  imagePath: imagePath };
 
-                  if ( !this.existFile(thumbnailFile) ){
-                      this.createSmallerImage(fileUrl, file[i]);
-                  }
+                if ( !this.existFile(thumbnailFile) ){
+                  this.createSmallerImage(fileUrl, file[i]);
+                }
 
                 arrayOfUrl.push(urlObj);
 
@@ -198,15 +198,15 @@ export class ImageUploader {
         const thumbnailFile = this.storagePath + img.width[index] + '/' + img.name;
 
         if ( !this.existFile(thumbnailFile)){
-            Jimp.read(img.path,  (err, data) => {
-              if (err) throw err;
-              data.resize(img.width[index], Jimp.AUTO)            // resize
-                .write(thumbnailFile); // save
-              // console.log('created img ' + thumbnailFile );
-            });
-          }else{
-            console.log('File already exists!!!');
-          }
+          Jimp.read(img.path,  (err, data) => {
+            if (err) throw err;
+            data.resize(img.width[index], Jimp.AUTO)            // resize
+              .write(thumbnailFile); // save
+            // console.log('created img ' + thumbnailFile );
+          });
+        }else{
+          console.log('File already exists!!!');
+        }
       }
 
     }else{
@@ -217,20 +217,14 @@ export class ImageUploader {
 
   deleteFile = (req, res) => {
 
-     const fileName = req.params.img;
+    const fileName = req.params.img;
 
-        this.removeImage(fileName).then(
-          result => {
-          /* successFunction */
-          res.send(result);
-        },
-        error => {
-          /* errorFunction */
-          res.send('error!promise returned error');
-        }
-
-        );
-      }
+    this.removeImage(fileName).then(
+      (result) => {
+        /* successFunction */
+        res.status(200).send();
+      }).catch((error) => console.log(error));
+  }
 
 
 
@@ -238,35 +232,35 @@ export class ImageUploader {
   removeImage(imgName){
     return new Promise((resolve, reject) => {
 
-        const img = {
-          name: imgName,
-          width: this.imageResolutions,
-          path: this.storagePath + imgName,
-        };
+      const img = {
+        name: imgName,
+        width: this.imageResolutions,
+        path: this.storagePath + imgName,
+      };
 
-        if ( this.existFile(img.path)  ) {
+      if ( this.existFile(img.path)  ) {
 
-            try {
-              fs.unlinkSync(img.path);
-            }
-            catch (err) {
-              console.log('err while remove:' + '\n' + err);
-            }
+        try {
+          fs.unlinkSync(img.path);
+        }
+        catch (err) {
+          console.log('err while remove:' + '\n' + err);
+        }
 
-          for (let index = 0; index < img.width.length; ++index) {
+        for (let index = 0; index < img.width.length; ++index) {
 
-            const thumbnailFile = this.storagePath + '/' + img.width[index] + '/' + img.name;
+          const thumbnailFile = this.storagePath + '/' + img.width[index] + '/' + img.name;
 
-            try {
-              fs.unlinkSync(thumbnailFile);
-            }
-            catch (err) {
-              console.log('err while remove:' + '\n' + err);
-            }
-
+          try {
+            fs.unlinkSync(thumbnailFile);
+          }
+          catch (err) {
+            console.log('err while remove:' + '\n' + err);
           }
 
-          resolve( 'all files removed');
+        }
+
+        resolve( 'all files removed');
 
       }else{
         reject( 'File not found or it is a directory');
